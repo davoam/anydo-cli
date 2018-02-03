@@ -1,44 +1,30 @@
-const Api = require('../anydo-api');
 const program = require('commander');
-const tokenManager = require('./lib/tokenManager');
-const formater = require('./lib/formater');
-
-const api = new Api();
-let tokenPromise = tokenManager.readToken()
-    .then((token) => api.setToken(token));
+const taskManager = require('./lib/taskManager');
+//
+program
+    .version('0.0.1');
 
 program
-    .version('0.0.1')
-    .command('add <name>', 'Add task to list')
-    .action((cmd) => {
-        console.log('name', cmd.name)
+    .command('add <title>')
+    .description('Add task')
+    .action((title) => {
+        return taskManager.add(title)
+            .catch(err => console.log(err));
     });
 
 program
     .command('list')
+    .description('List all tasks by date')
     .action(() => {
-        return tokenPromise
-            .then(() => {
-                api.sync().then((res) => {
-                    console.log(formater.byDate(res.models.task.items));
-                });
-            });
+        return taskManager.list();
     });
 
 program
-    .command('login')
+    .command('login', 'Login into any.do')
     .option('-p --password <password>')
     .option('-e --email <email>')
     .action((cmd) => {
-        tokenPromise = api
-            .login({
-                email: cmd.email,
-                password: cmd.password
-            })
-            .then((token) => {
-                tokenManager.saveToken(token);
-                return token;
-            })
+        tokenManager.getToken(cmd.email, cmd.password)
     });
 
 
