@@ -5,11 +5,18 @@
   "main": "index.js",
   "author": "David Stepanov <davstepanov@gmail.com>",
   "license": "ISC",
+  "bin": {
+    "ado": "bin.js"
+  },
   "dependencies": {
     "anydo-api": "0.0.1",
     "commander": "^2.13.0",
     "lodash": "^4.17.4",
     "moment": "^2.20.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davoam/anydo-cli.git"
   },
   "keywords": [
     "anydo",
