@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const program = require('commander');
 const taskManager = require('./lib/taskManager');
 //
@@ -20,11 +22,12 @@ program
     });
 
 program
-    .command('login', 'Login into any.do')
+    .command('login')
+    .description('Login into any.do')
     .option('-p --password <password>')
     .option('-e --email <email>')
-    .action((cmd) => {
-        tokenManager.getToken(cmd.email, cmd.password)
+    .action((options) => {
+        tokenManager.getToken(options.email, options.password)
     });
 
 
