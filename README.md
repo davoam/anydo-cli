@@ -1,9 +1,14 @@
 # Any.do CLI (unofficial)
-This CLI allows to list and add tasks. 
+This CLI allows to list and add tasks.
+
+## Installation
+```bash
+npm install -g ado-cli 
+```
 
 ## Usage
-First to use CLI you have to login. CLI does not store your credentials.
-It just use them to get token. 
+In order to use CLI you have to login. CLI does not store your credentials.
+It just uses them to get token. 
 
 In order to **login** you have to run the following command
 ```bash
