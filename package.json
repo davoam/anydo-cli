@@ -9,7 +9,7 @@
     "ado": "bin.js"
   },
   "dependencies": {
-    "anydo-api": "0.0.1",
+    "anydo-api": "0.0.5",
     "commander": "^2.13.0",
     "lodash": "^4.17.4",
     "moment": "^2.20.1"

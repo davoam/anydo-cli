@@ -9,10 +9,18 @@ program
     .version('0.0.1');
 
 program
-    .command('add <title>')
+    .command('add <titles...>')
     .description('Add task')
-    .action((title) => {
-        return taskManager.add(title)
+    .option('-d --due-date <dueDate>')
+    .action((titles, options) => {
+        let formattedTasks = titles.map(t => {
+            return {
+                title: t,
+                dueDate: options.dueDate
+            };
+        });
+
+        return taskManager.add(formattedTasks)
             .catch(err => console.log(err));
     });
 
