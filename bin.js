@@ -2,6 +2,8 @@
 
 const program = require('commander');
 const taskManager = require('./lib/taskManager');
+const tokenManager = require('./lib/tokenManager');
+
 //
 program
     .version('0.0.1');
