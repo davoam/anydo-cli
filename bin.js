@@ -3,6 +3,7 @@
 const program = require('commander');
 const taskManager = require('./lib/taskManager');
 const tokenManager = require('./lib/tokenManager');
+const open = require('opn');
 
 //
 program
@@ -40,5 +41,11 @@ program
         tokenManager.getToken(options.email, options.password)
     });
 
+program
+    .command('web')
+    .description('Open web version of any.do')
+    .action(() => {
+        open('https://web.any.do/')
+    });
 
 program.parse(process.argv);
