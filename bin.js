@@ -5,6 +5,7 @@ const taskManager = require('./lib/taskManager');
 const tokenManager = require('./lib/tokenManager');
 const open = require('opn');
 const ora = require('ora');
+const inquirer = require('inquirer');
 
 let executed = false;
 
@@ -72,6 +73,42 @@ program
         open('https://web.any.do/', {wait: false})
     });
 
+program
+    .command('delete')
+    .description('Delete selected task')
+    .action(() => {
+        onCommandFound();
+        const spinner = showSpinner('Loading tasks');
+        return taskManager.list({doNotFormat: true})
+            .then((tasks) => {
+                spinner.stop();
+                const items = tasks.sort((a, b) => a.dueDate === null ||  a.dueDate > b.dueDate ? 1 : -1)
+                    .map(t => {
+                        return {
+                            name: t.title,
+                            value: t.id,
+                            short: t.title
+                        }
+                    });
+                inquirer.prompt({
+                    type: 'list',
+                    name: 'task',
+                    message: 'What task to delete (select and press enter)?',
+                    choices: items
+                })
+                .then(answers => {
+                    spinner.clear().start('Deleting task');
+                    return taskManager.del(answers.task);
+                })
+                .then(() => {
+                    spinner.stop('Task was deleted');
+                })
+            })
+            .catch((err) => {
+                spinner.fail(err);
+            });
+
+    });
 
 program.parse(process.argv);
 

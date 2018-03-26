@@ -11,6 +11,7 @@
   "dependencies": {
     "anydo-api": "^0.1.2",
     "commander": "^2.13.0",
+    "inquirer": "^5.2.0",
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
     "opn": "^5.3.0",
