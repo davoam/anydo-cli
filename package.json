@@ -1,6 +1,6 @@
 {
   "name": "ado-cli",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Any.do CLI (unofficial)",
   "main": "index.js",
   "author": "David Stepanov <davstepanov@gmail.com>",
