@@ -1,6 +1,9 @@
 # Any.do CLI (unofficial)
 This CLI allows to list and add tasks.
 
+## Demo
+![any.do cli demo](demo.gif)
+
 ## Installation
 ```bash
 npm install -g ado-cli 
@@ -46,4 +49,8 @@ ado add --due-date tomorrow 'buy oreo' 'buy kitkat'
 | login| --email --password | Login to Any.DO account|
 | list||Display all incomplete tasks|
 | add|--due-date(optional, by default will be today)|Add task|
+| delete| |Choose task to delete|
 | web||Open web version of Any.DO in default browser|
+
+## Requirements
+- nodejs
